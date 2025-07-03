@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Abono</title>
+</head>
+<body>
+    <h2>Registrar Abono</h2>
+    <form method="POST">
+        <label>Cliente:</label><br>
+        <select name="id_cliente" required>
+            {% for cliente in clientes %}
+                <option value="{{ cliente.id_cliente }}">{{ cliente.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Venta:</label><br>
+        <select name="id_venta" required>
+            {% for venta in ventas %}
+                <option value="{{ venta.id_venta }}">{{ venta.id_venta }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Monto del abono:</label><br>
+        <input type="number" step="0.01" name="monto" required><br><br>
+
+        <input type="submit" value="Registrar Abono">
+    </form>
+</body>
+</html>

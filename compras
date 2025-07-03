@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Compras</title>
+</head>
+<body>
+    <h1>Registrar Compra</h1>
+    <form method="POST">
+        <label for="id_proveedor">Proveedor:</label>
+        <select name="id_proveedor" required>
+            {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id_proveedor }}">{{ proveedor.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="id_cliente">Cliente:</label>
+        <select name="id_cliente" required>
+            {% for cliente in clientes %}
+            <option value="{{ cliente.id_cliente }}">{{ cliente.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="total">Total:</label>
+        <input type="number" name="total" step="0.01" required><br><br>
+
+        <button type="submit">Registrar Compra</button>
+    </form>
+
+    <h2>Historial de Compras</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Proveedor</th>
+            <th>Cliente</th>
+        </tr>
+        {% for compra in compras %}
+        <tr>
+            <td>{{ compra.id_compra }}</td>
+            <td>{{ compra.fecha_compra }}</td>
+            <td>{{ compra.total }}</td>
+            <td>{{ compra.proveedor }}</td>
+            <td>{{ compra.cliente }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

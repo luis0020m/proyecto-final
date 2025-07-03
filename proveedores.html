@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedores</title>
+</head>
+<body>
+    <h1>Lista de Proveedores</h1>
+    <form method="POST">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <input type="text" name="telefono" placeholder="Teléfono">
+        <button type="submit">Agregar</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+        {% for proveedor in proveedores %}
+        <tr>
+            <td>{{ proveedor.id_proveedor }}</td>
+            <td>{{ proveedor.nombre }}</td>
+            <td>{{ proveedor.direccion_provedor }}</td>
+            <td>{{ proveedor.telefono }}</td>
+            <td>
+                <a href="{{ url_for('editar_proveedor', id=proveedor.id_proveedor) }}">Editar</a>
+                <a href="{{ url_for('eliminar_proveedor_route', id=proveedor.id_proveedor) }}" onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

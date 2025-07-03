@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorías</title>
+</head>
+<body>
+    <h2>Lista de Categorías</h2>
+    <ul>
+        {% for categoria in categorias %}
+            <li>{{ categoria.nombre_categoria }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Agregar Categoría</h3>
+    <form method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" name="nombre" required><br><br>
+        <input type="submit" value="Agregar">
+    </form>
+</body>
+

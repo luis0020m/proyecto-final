@@ -1,0 +1,25 @@
+<h1>Estados de Pedido</h1>
+
+<form method="POST">
+    <label for="nombre_estado">Nuevo Estado:</label>
+    <input type="text" name="nombre_estado" required>
+    <button type="submit">Agregar Estado</button>
+</form>
+
+<h2>Estados registrados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estado in estados %}
+        <tr>
+            <td>{{ estado.id_estado_pedido }}</td>
+            <td>{{ estado.nombre_estado }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

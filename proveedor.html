@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Proveedor</title>
+</head>
+<body>
+    <h1>Editar Proveedor</h1>
+    <form method="POST" action="{{ url_for('actualizar_proveedor_route') }}">
+        <input type="hidden" name="id_proveedor" value="{{ proveedor.id_proveedor }}">
+        <input type="text" name="nombre" value="{{ proveedor.nombre }}" required>
+        <input type="text" name="direccion" value="{{ proveedor.direccion_provedor }}" required>
+        <input type="text" name="telefono" value="{{ proveedor.telefono }}">
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="{{ url_for('proveedores') }}">Volver</a>
+</body>
+</html>

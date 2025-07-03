@@ -1,0 +1,49 @@
+<h1>Gestión de Pedidos</h1>
+
+<form method="POST">
+    <label>Fecha del Pedido:</label>
+    <input type="date" name="fecha_pedido" required>
+
+    <label>Fecha de Entrega:</label>
+    <input type="date" name="fecha_entrega" required>
+
+    <label>Proveedor:</label>
+    <select name="id_proveedor">
+        {% for proveedor in proveedores %}
+        <option value="{{ proveedor.id_proveedor }}">{{ proveedor.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Estado del Pedido:</label>
+    <select name="id_estado_pedido">
+        {% for estado in estados %}
+        <option value="{{ estado.id_estado_pedido }}">{{ estado.nombre_estado }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Registrar Pedido</button>
+</form>
+
+<h2>Pedidos Registrados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha Pedido</th>
+            <th>Fecha Entrega</th>
+            <th>ID Proveedor</th>
+            <th>ID Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in pedidos %}
+        <tr>
+            <td>{{ pedido.id_pedido }}</td>
+            <td>{{ pedido.fecha_pedido }}</td>
+            <td>{{ pedido.fecha_entrega }}</td>
+            <td>{{ pedido.id_proveedor }}</td>
+            <td>{{ pedido.id_estado_pedido }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

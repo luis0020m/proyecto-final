@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Cliente</title>
+</head>
+<body>
+    <h1>Editar Cliente</h1>
+
+    <form method="POST" action="/actualizar_cliente">
+        <input type="hidden" name="id_cliente" value="{{ cliente.id_cliente }}">
+        <input type="text" name="nombre" value="{{ cliente.nombre }}" required>
+        <input type="text" name="direccion" value="{{ cliente.direccion_cliente }}" required>
+        <input type="text" name="telefono" value="{{ cliente.telefono }}" required>
+        <input type="number" step="0.01" name="saldo" value="{{ cliente.saldo }}" required>
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <a href="/clientes">Cancelar</a>
+</body>
+</html>

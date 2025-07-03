@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ventas</title>
+</head>
+<body>
+    <h1>Registrar Venta</h1>
+    <form method="POST">
+        <label for="tipo_venta">Tipo de venta:</label>
+        <select name="tipo_venta" required>
+            <option value="Contado">Contado</option>
+            <option value="Crédito">Crédito</option>
+        </select><br><br>
+
+        <label for="id_cliente">Cliente:</label>
+        <select name="id_cliente" required>
+            {% for cliente in clientes %}
+            <option value="{{ cliente.id_cliente }}">{{ cliente.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="id_usuario">Usuario (vendedor):</label>
+        <select name="id_usuario" required>
+            {% for usuario in usuarios %}
+            <option value="{{ usuario.id_usuario }}">{{ usuario.nombre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="total_venta">Total:</label>
+        <input type="number" name="total_venta" step="0.01" required><br><br>
+
+        <button type="submit">Registrar Venta</button>
+    </form>
+
+    <h2>Historial de Ventas</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Cliente</th>
+            <th>Usuario</th>
+            <th>Total</th>
+        </tr>
+        {% for venta in ventas %}
+        <tr>
+            <td>{{ venta.id_venta }}</td>
+            <td>{{ venta.fecha_venta }}</td>
+            <td>{{ venta.tipo_venta }}</td>
+            <td>{{ venta.id_cliente }}</td>
+            <td>{{ venta.id_usuario }}</td>
+            <td>{{ venta.total_venta }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

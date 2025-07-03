@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Pedidos</title>
+</head>
+<body>
+    <h2>Detalles de Pedidos</h2>
+    <table border="1">
+        <tr>
+            <th>ID Pedido</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Compra</th>
+        </tr>
+        {% for detalle in detalles %}
+        <tr>
+            <td>{{ detalle.id_pedido }}</td>
+            <td>{{ detalle.nombre_producto }}</td>
+            <td>{{ detalle.cantidad_pedido }}</td>
+            <td>${{ detalle.precio_compra }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Agregar Detalle de Pedido</h3>
+    <form method="POST">
+        <label for="id_pedido">Pedido:</label><br>
+        <select name="id_pedido" required>
+            {% for p in pedidos %}
+                <option value="{{ p.id_pedido }}">{{ p.id_pedido }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="id_producto">Producto:</label><br>
+        <select name="id_producto" required>
+            {% for prod in productos %}
+                <option value="{{ prod.id_producto }}">{{ prod.nombre_producto }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="cantidad">Cantidad:</label><br>
+        <input type="number" name="cantidad" required><br>
+
+        <label for="precio">Precio Compra:</label><br>
+        <input type="number" step="0.01" name="precio" required><br><br>
+
+        <input type="submit" value="Agregar Detalle">
+    </form>
+</body>
+</html>

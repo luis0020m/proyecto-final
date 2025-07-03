@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clientes</title>
+</head>
+<body>
+    <h1>Clientes</h1>
+
+    <form method="POST" action="/clientes">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <input type="text" name="telefono" placeholder="Teléfono" required>
+        <input type="number" step="0.01" name="saldo" placeholder="Saldo" required>
+        <button type="submit">Agregar Cliente</button>
+    </form>
+
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                {{ cliente.nombre }} - {{ cliente.direccion_cliente }} - {{ cliente.telefono }} - ${{ cliente.saldo }}
+                [<a href="/editar_cliente/{{ cliente.id_cliente }}">Editar</a>]
+                [<a href="/eliminar_cliente/{{ cliente.id_cliente }}">Eliminar</a>]
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

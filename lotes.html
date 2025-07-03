@@ -1,0 +1,54 @@
+<h1>Gestión de Lotes</h1>
+
+<form method="POST">
+    <label>Producto:</label>
+    <select name="id_producto">
+        {% for producto in productos %}
+        <option value="{{ producto.id_producto }}">{{ producto.nombre_producto }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Fecha de Vencimiento:</label>
+    <input type="date" name="fecha_vencimiento" required>
+
+    <label>Stock:</label>
+    <input type="number" name="stock" required>
+
+    <label>¿Agotado?</label>
+    <input type="checkbox" name="agotado" value="1">
+
+    <label>Pedido:</label>
+    <select name="id_pedido">
+        {% for pedido in pedidos %}
+        <option value="{{ pedido.id_pedido }}">{{ pedido.id_pedido }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Registrar Lote</button>
+</form>
+
+<h2>Lotes Registrados</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID Lote</th>
+            <th>ID Producto</th>
+            <th>Fecha Vencimiento</th>
+            <th>Stock</th>
+            <th>Agotado</th>
+            <th>ID Pedido</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lote in lotes %}
+        <tr>
+            <td>{{ lote.id_lote }}</td>
+            <td>{{ lote.id_producto }}</td>
+            <td>{{ lote.fecha_vencimiento }}</td>
+            <td>{{ lote.stock }}</td>
+            <td>{{ 'Sí' if lote.agotado else 'No' }}</td>
+            <td>{{ lote.id_pedido }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
